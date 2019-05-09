@@ -10,10 +10,12 @@ import { mapGetters } from 'vuex'
 
 
 export default {
-  name: 'subtitle',
-
-  computed: {
-    ...mapGetters(['text'])
+  name: 'MySubtitle',
+  props: {
+     text: {
+      type: String,
+      required: true
+     }
   }
 }
 

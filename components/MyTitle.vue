@@ -1,6 +1,6 @@
 <template>
   <h1>
-    {{ title }}
+    {{ text }}
   </h1>
 </template>
 
@@ -10,9 +10,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'MyTitle',
-  computed: {
-    ...mapGetters(['title'])
-  },
+  props: {
+     text: {
+      type: String,
+      required: true
+     }
+  }
 }
 
 </script>

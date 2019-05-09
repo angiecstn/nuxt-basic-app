@@ -1,10 +1,10 @@
 <template>
   <section class="container" :style="{'backgroundColor': backgroundColor}" id="container">
-      <my-title class="title" />
-      <my-subtitle class="subtitle"/>
-      <button class="btn" @click="onClick"> Click me</button>
+      <my-title class="title" :text="title"/>
+      <my-subtitle class="subtitle" :text="text" />
+      <my-button class="btn" @click="onTitleClick" />
       <my-input class="input" />
-       <my-color-picker class="color-picker" />
+      <my-color-picker class="color-picker" />
   </section>
 </template>
 
@@ -14,6 +14,7 @@ import MyTitle from '@/components/MyTitle'
 import { mapActions, mapGetters } from 'vuex'
 import MyInput from '@/components/MyInput'
 import MyColorPicker from '@/components/MyColorPicker'
+import MyButton from '@/components/MyButton'
 
 
 export default {
@@ -21,14 +22,15 @@ export default {
     MySubtitle,
     MyTitle,
     MyInput,
-    MyColorPicker
+    MyColorPicker,
+    MyButton
   },
   computed: {
-    ...mapGetters(['backgroundColor']),
+    ...mapGetters(['backgroundColor', 'title', 'text'])
   },
   methods: {
     ...mapActions(['updateIsPressed']),
-    onClick(e) {
+    onTitleClick(e) {
       this.updateIsPressed()
     }
   }
@@ -63,7 +65,15 @@ export default {
   transform: translateY(100%);
 }
 
-/* .title {
+.btn-out {
+  position: absolute;
+  bottom: -20px;
+  transform: translateY(100%);
+  margin-left: 30%;
+  height: 25px;
+}
+/*
+.btn-out {
   text-align: center;
 } */
 
